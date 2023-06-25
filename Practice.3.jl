@@ -1,5 +1,5 @@
 ___________Задание № 1 ______________
-function isprime(n::IntType) where IntType <: Integer # является ли заданное число простым
+function isprime(n::IntType) where IntType <: Integer # проверка на простоту числа
     for d in 2:IntType(ceil(sqrt(n)))
         if n % d == 0
             return false
