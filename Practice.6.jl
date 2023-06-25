@@ -1,3 +1,5 @@
+using Plots
+using LinearAlgebra
 
 __________ Задание №1 ___________
 
@@ -160,3 +162,24 @@ function is_convex_polygon(points::Vector{Point})
     # Если не было изменений знака векторного произведения, многоугольник выпуклый
     return true
 end
+
+______________ Задание №9 __________________
+
+
+function area_trapeze(poly::AbstractArray{Vector2D{T}})::T where T
+    res = zero(T)
+
+	# area = (yk + yk+1)(xk+1 − xk)/2
+    for i in firstindex(poly):lastindex(poly)-1
+        res += (poly[i].y + poly[i+1].y) * (poly[i+1].x - poly[i].x) / 2
+    end
+
+    return res
+end
+
+println("Площадь (Трапеция): ",area_trapeze( [
+	(x=2.0,y=-1.0),
+	(x=1.0,y=2.0),
+	(x=-1.0,y=3.0),
+	(x=-3.0,y=-1.0),
+] ))
